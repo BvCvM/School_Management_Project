@@ -25,6 +25,8 @@ public class EleveDto extends UserBaseDto{
 	private  NiveauScolaire niveauScolaire;
 	private String statutPaiement;
 	private String statutAffectation;
+	
+	
 	public static Eleve toEntity(EleveDto request)
 	{
 		return Eleve.builder()

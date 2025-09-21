@@ -21,6 +21,7 @@ public class ProfesseurDto extends UserBaseDto {
 	private String cin;
 	private String diplome;
 	private Date dateDebutTravail;
+	
 	 public static Professeur toEntity(ProfesseurDto request) 
 	    {
 	        return Professeur.builder() 

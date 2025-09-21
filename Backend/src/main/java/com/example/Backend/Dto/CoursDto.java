@@ -20,7 +20,7 @@ public class CoursDto {
 	    private Long matiereId;
 
 
-	    public static Cours toDTO(CoursDto request)
+	    public static Cours toEntity(CoursDto request)
 	    {
 	        return Cours.builder()
 	                .id(request.getId())
@@ -31,7 +31,7 @@ public class CoursDto {
 
 
 	    }
-	    public static CoursDto fromEntity(Cours request)
+	    public static CoursDto toDTO(Cours request)
 	    {
 	        return CoursDto.builder()
 	                .id(request.getId())
