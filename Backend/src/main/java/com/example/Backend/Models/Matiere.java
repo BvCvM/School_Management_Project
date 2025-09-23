@@ -8,7 +8,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -27,23 +26,30 @@ import lombok.Setter;
 @Entity  
 @Table(name="matiere")
 public class Matiere {
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO )
-	private Long id ;
-	@Column
-	private int coeff;
-	private String nom;
-	 private String cover;
-	private Integer duree;
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<EmploiDeTemps> seancs;
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<Examen> examen;
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<Professeur> professeur; 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Administrateur administrateur;
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Cours> cours;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
+    private int coeff;
+    private String nom;
+    private String cover;
+    private Integer duree;
+
+    @OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
+    private List<Cours> cours;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<EmploiDeTemps> seancs;
+
+    @OneToMany(mappedBy = "matiere", fetch = FetchType.LAZY)
+    private List<Examen> examens;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Professeur> professeur;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Administrateur administrateur;
 }
+
+

@@ -20,11 +20,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="absence")
+@Table(name="Absence")
 public class Absence {
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO )
-	private long id ;
+	private Long id ;
 	@Column
 	private Date date;
 	private String matiere;

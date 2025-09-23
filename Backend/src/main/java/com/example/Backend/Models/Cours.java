@@ -6,6 +6,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -19,19 +20,24 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity 
-@Table(name="cours")
+@Table(name = "cours")
+@Entity
 public class Cours {
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO )
-	private Long id;
-	private String titre;
-	private String urlcours;
-	private String filecours;
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Professeur professeur; 
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<Classe> classe;
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Matiere matiere;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String titre;
+    private String urlcours;
+    private String filecours;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Professeur professeur;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Classe> classe;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "matiere_id", nullable = false) // explicit FK column
+    private Matiere matiere;
 }

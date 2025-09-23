@@ -53,7 +53,6 @@ public class User implements UserDetails {
 		 @ManyToMany(fetch =FetchType.EAGER)
 		   private List<Role> roles;
 		  @OneToMany(mappedBy ="user",cascade = CascadeType.ALL)
-
 		     private List<Token> tokens;
 	      @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
 		    private VerificationToken verificationToken;
