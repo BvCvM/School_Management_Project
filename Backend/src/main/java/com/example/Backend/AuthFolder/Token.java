@@ -1,6 +1,9 @@
-package com.example.Backend.Models;
+package com.example.Backend.AuthFolder;
 
 
+
+import com.example.Backend.Models.TokenType;
+import com.example.Backend.Models.User;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -17,13 +20,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Token {
+	
+
 	 @Id
 	 @GeneratedValue
 	 public Integer id;
@@ -36,10 +40,14 @@ public class Token {
 	 @Enumerated(EnumType.STRING)
 	 @Builder.Default
 	 public TokenType tokenType = TokenType.BEARER;
+
+
 	 public boolean revoked;
+
+
 	 public boolean expired;
 
-	 
+
 	 @ManyToOne(fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
 	 @JoinColumn(name = "user_id" )
 	 public User user;
